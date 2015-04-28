@@ -1,14 +1,14 @@
 "use strict";
 
-var http = require("http"),
-    url = require("url"),
+var url = require("url"),
     util = require("util");
 
 var clone = require("clone"),
     request = require("request");
 
-var meta = require("./package.json"),
-    PREFIX = "fieldpapers+",
+var meta = require("./package.json");
+
+var PREFIX = "fieldpapers+",
     NAME = meta.name,
     VERSION = meta.version;
 
@@ -38,7 +38,7 @@ module.exports = function(tilelive) {
   };
 
   var Source = function(uri, callback) {
-    if (typeof(uri) === "string") {
+    if (typeof uri === "string") {
       uri = url.parse(uri, true);
     } else {
       uri = clone(uri);
