@@ -27,7 +27,8 @@ module.exports = function(tilelive) {
     return request({
       uri: sourceUrl,
       headers: headers,
-      json: true
+      json: true,
+      timeout: 5e3
     }, holdtime(function(err, rsp, body, elapsedMS) {
       debug("%s took %dms", sourceUrl, elapsedMS);
 
