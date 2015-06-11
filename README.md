@@ -17,7 +17,8 @@ compiled with support for).
 tilelive.load("fieldpapers+http://next.fieldpapers.org/snapshots/xz4z2mkc", ...);
 ```
 
-## Caveats
+## Debugging
 
-This only works with [Field Papers vNext](http://next.fieldpapers.org/), which
-is being developed here: https://github.com/fieldpapers
+tilelive-fieldpapers uses [debug](https://github.com/visionmedia/debug) to
+facilitate debugging. To enable tilelive-fieldpapers-related messages, set
+`DEBUG=tilelive-fieldpapers` before running code that calls into this.

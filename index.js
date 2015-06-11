@@ -4,6 +4,8 @@ var url = require("url"),
     util = require("util");
 
 var clone = require("clone"),
+    debug = require("debug")("tilelive-fieldpapers"),
+    holdtime = require("holdtime"),
     request = require("request");
 
 var meta = require("./package.json");
@@ -20,21 +22,27 @@ module.exports = function(tilelive) {
 
     var sourceUrl = url.format(uri);
 
+    debug("Requesting %s...", sourceUrl);
+
     return request({
       uri: sourceUrl,
       headers: headers,
       json: true
-    }, function(err, rsp, body) {
+    }, holdtime(function(err, rsp, body, elapsedMS) {
+      debug("%s took %dms", sourceUrl, elapsedMS);
+
       if (err) {
+        debug(err);
         return callback(err);
       }
 
       if (rsp.statusCode !== 200) {
+        debug("Received %d response for %s", rsp.statusCode, sourceUrl);
         return callback(new Error(util.format("Received %d response for %s", rsp.statusCode, sourceUrl)));
       }
 
       return tilelive.load("raster+" + body.geotiff.url, callback);
-    });
+    }));
   };
 
   var Source = function(uri, callback) {
@@ -52,6 +60,7 @@ module.exports = function(tilelive) {
         return load(uri, callback);
 
       default:
+        debug("Unsupported %s transport: %s", NAME, url.format(uri));
         return callback(new Error(util.format("Unsupported %s transport: %s", NAME, url.format(uri))));
     }
   };
