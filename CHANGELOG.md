@@ -1,6 +1,6 @@
 # Changes
 
-## vNext
+## v0.1.1 - 6/11/15
 
 * Improve debugging support using `debug`. To enable, set
   `DEBUG=tilelive-fieldpapers`
