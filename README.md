@@ -14,7 +14,7 @@ render them, so it should work with any format that GDAL supports (and has been
 compiled with support for).
 
 ```javascript
-tilelive.load("fieldpapers+http://next.fieldpapers.org/snapshots/xz4z2mkc", ...);
+tilelive.load("fieldpapers+http://fieldpapers.org/snapshots/xz4z2mkc", ...);
 ```
 
 ## Debugging
