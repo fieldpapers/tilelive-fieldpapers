@@ -10,7 +10,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "clone": "^1.0.2",
+    "clone": "^2.0.0",
     "debug": "^2.2.0",
     "holdtime": "^0.1.1",
     "request": "^2.55.0"
